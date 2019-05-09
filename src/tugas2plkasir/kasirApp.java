@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 public class kasirApp extends javax.swing.JFrame {
 
     private int all;
+    
+
 
     /**
      * Creates new form kasirApp
@@ -26,6 +28,7 @@ public class kasirApp extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("App by Us");
+        Jumlah.setVisible(false);
     }
     
     /**
@@ -56,6 +59,7 @@ public class kasirApp extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Kembalian = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        Jumlah = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(718, 482));
@@ -188,6 +192,7 @@ public class kasirApp extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(0, 0, 110, 23);
 
+        Kembalian.setEditable(false);
         Kembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 KembalianActionPerformed(evt);
@@ -200,6 +205,11 @@ public class kasirApp extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 60, 50, 20);
 
+        Jumlah.setEditable(false);
+        Jumlah.setEnabled(false);
+        jPanel1.add(Jumlah);
+        Jumlah.setBounds(90, 210, 140, 20);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 720, 480);
 
@@ -208,6 +218,8 @@ public class kasirApp extends javax.swing.JFrame {
 
     private void buttonTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTotalActionPerformed
         // TODO add your handling code here:
+        Interface cetak = new Interface();
+        cetak.setVisible(true);
       
         int totalBelanja = 0;
         int cash= Integer.parseInt(cashIn.getText());
@@ -230,12 +242,14 @@ public class kasirApp extends javax.swing.JFrame {
 
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
         // TODO add your handling code here:
+        Gudang gd = new Gudang();
+        int totalBiaya;
         int harga= Integer.parseInt(price.getText());//var harga
         int kuantitas= Integer.parseInt(qty.getText());//var quantity
         int jumlahharga= harga*kuantitas;//var jumlah
+        Jumlah.setText(""+jumlahharga);
+        Jumlah.setVisible(false);
         boolean valid=true;
-        jumlah.setText(""+jumlahharga);
-        jumlah.setVisible(true);
         messege.setText("");
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         if(name.getText().trim().isEmpty()){
@@ -246,14 +260,14 @@ public class kasirApp extends javax.swing.JFrame {
             z.add(name.getText());
             z.add(price.getText());
             z.add(qty.getText());
-            z.add(jumlah.getText());
+            z.add(Jumlah.getText());
             tb.addRow(z);
             int total=0;
             for(int e=0;e<tb.getRowCount();e++){
                 total +=Integer.parseInt(tb.getValueAt(e, 3).toString());
             }
             
-            totalBiaya.setText(""+total);
+            
         }
     }//GEN-LAST:event_addProductActionPerformed
 
@@ -261,9 +275,6 @@ public class kasirApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         tb.removeRow(all);
-        totalBiaya.setText("0");
-        jumlah.setText("0");
-        kembali.setText("0");
     }//GEN-LAST:event_resetActionPerformed
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
@@ -348,6 +359,7 @@ public class kasirApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Jumlah;
     private javax.swing.JTextField Kembalian;
     private javax.swing.JTable Tabel;
     private javax.swing.JButton addProduct;
