@@ -46,7 +46,7 @@ public class kasirApp extends javax.swing.JFrame {
         qty = new javax.swing.JTextField();
         addProduct = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabel = new javax.swing.JTable();
         reset = new javax.swing.JButton();
         cashIn = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -56,7 +56,6 @@ public class kasirApp extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Kembalian = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(718, 482));
@@ -67,11 +66,11 @@ public class kasirApp extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Barang");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 100, 70, 16);
+        jLabel1.setBounds(10, 100, 70, 14);
 
         jLabel2.setText("Harga Satuan");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 140, 70, 16);
+        jLabel2.setBounds(10, 140, 70, 14);
 
         jLabel3.setText("Qty");
         jPanel1.add(jLabel3);
@@ -104,7 +103,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(qty);
-        qty.setBounds(90, 180, 70, 24);
+        qty.setBounds(90, 180, 70, 20);
 
         addProduct.setText("In");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -113,9 +112,9 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addProduct);
-        addProduct.setBounds(170, 180, 60, 32);
+        addProduct.setBounds(170, 180, 60, 23);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -131,7 +130,7 @@ public class kasirApp extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabel);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(270, 50, 430, 410);
@@ -143,7 +142,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(10, 370, 70, 32);
+        reset.setBounds(10, 370, 70, 23);
 
         cashIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +155,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cashIn);
-        cashIn.setBounds(90, 270, 165, 24);
+        cashIn.setBounds(90, 270, 165, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Cash");
@@ -170,7 +169,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonTotal);
-        buttonTotal.setBounds(90, 370, 70, 32);
+        buttonTotal.setBounds(90, 370, 70, 23);
         jPanel1.add(messege);
         messege.setBounds(210, 170, 290, 20);
 
@@ -187,7 +186,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(0, 0, 110, 32);
+        jButton1.setBounds(0, 0, 110, 23);
 
         Kembalian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,13 +194,11 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Kembalian);
-        Kembalian.setBounds(90, 320, 160, 24);
+        Kembalian.setBounds(90, 320, 160, 20);
 
         jLabel4.setText("Tanggal");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(10, 60, 50, 20);
-        jPanel1.add(jDateChooser1);
-        jDateChooser1.setBounds(90, 50, 150, 29);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 720, 480);
@@ -212,10 +209,15 @@ public class kasirApp extends javax.swing.JFrame {
     private void buttonTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTotalActionPerformed
         // TODO add your handling code here:
       
-        
+        int totalBelanja = 0;
         int cash= Integer.parseInt(cashIn.getText());
         
-        int kembalian= cash-totalBelanja;
+        for (int i = 0; i < Tabel.getRowCount(); i++){
+        int amount = Integer.parseInt((String) Tabel.getValueAt(i, 3));
+        totalBelanja = totalBelanja + amount;
+        }
+        
+        int kembalian= cash - totalBelanja;
         int invertKembalian = kembalian*(-1);
         if(cash<totalBelanja){
             JOptionPane.showMessageDialog(rootPane, "Cash kurang Rp "+invertKembalian+",00");
@@ -235,7 +237,7 @@ public class kasirApp extends javax.swing.JFrame {
         jumlah.setText(""+jumlahharga);
         jumlah.setVisible(true);
         messege.setText("");
-        DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         if(name.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Maaf anda harus melengkapi seluruh form");
         }
@@ -257,7 +259,7 @@ public class kasirApp extends javax.swing.JFrame {
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tb = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         tb.removeRow(all);
         totalBiaya.setText("0");
         jumlah.setText("0");
@@ -347,11 +349,11 @@ public class kasirApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Kembalian;
+    private javax.swing.JTable Tabel;
     private javax.swing.JButton addProduct;
     private javax.swing.JButton buttonTotal;
     private javax.swing.JTextField cashIn;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -360,7 +362,6 @@ public class kasirApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel messege;
     private javax.swing.JTextField name;
     private javax.swing.JTextField price;
