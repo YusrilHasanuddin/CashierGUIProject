@@ -1,0 +1,8 @@
+Nama Barang                         ,Harga Satuan    ,Persediaan
+Nitrogen per Liter                  /99              /500
+Debu Cosmic per Gram                /299             /7000
+Gas Kalium Hidroksida per Kilogram  /119             /200
+Air Purba per Liter                 /2999            /30
+Fosil Batuan per Gram               /999             /100
+Beterai Plasma                      /799             /1000
+Infinity Stone - Reality Stone      /99999           /1 
