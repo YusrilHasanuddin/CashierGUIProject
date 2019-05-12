@@ -1,3 +1,4 @@
 Nama Barang,Harga Satuan,Qty,Jumlah harga
-dsffdsf/200/2/400
-fdfs/300/2/600
+Air Purba per Liter  /4000/10/40000
+Air Purba per Liter  /500/2/1000
+Debu Cosmic per Gram   /900/9/8100

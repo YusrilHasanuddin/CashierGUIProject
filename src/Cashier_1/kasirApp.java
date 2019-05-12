@@ -13,6 +13,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 
 public class kasirApp extends javax.swing.JFrame {
@@ -30,6 +31,7 @@ public class kasirApp extends javax.swing.JFrame {
     
     public kasirApp() {
         initComponents();
+        AutoCompleteDecorator.decorate(name);
         setLocationRelativeTo(this);
         setTitle("App by Us");
         Jumlah.setVisible(false);
@@ -37,7 +39,7 @@ public class kasirApp extends javax.swing.JFrame {
     }
     
     public void loadData(){
-        url = "src/tugas2plkasir/Belanjaan.txt";
+        url = "src/Cashier_1/Belanjaan.txt";
         file = new File(url);
         try{
             br = new BufferedReader(new FileReader(file));
@@ -65,7 +67,6 @@ public class kasirApp extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
         price = new javax.swing.JTextField();
         qty = new javax.swing.JTextField();
         addProduct = new javax.swing.JButton();
@@ -81,6 +82,9 @@ public class kasirApp extends javax.swing.JFrame {
         Kembalian = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Jumlah = new javax.swing.JTextField();
+        name = new javax.swing.JComboBox();
+        jLabel7 = new javax.swing.JLabel();
+        TotalB = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(760, 485));
@@ -92,23 +96,15 @@ public class kasirApp extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Barang");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 100, 80, 14);
+        jLabel1.setBounds(10, 100, 80, 16);
 
         jLabel2.setText("Harga Satuan");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 140, 80, 14);
+        jLabel2.setBounds(10, 140, 80, 16);
 
         jLabel3.setText("Qty");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(10, 180, 70, 20);
-
-        name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
-            }
-        });
-        jPanel1.add(name);
-        name.setBounds(130, 90, 150, 30);
 
         price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +134,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addProduct);
-        addProduct.setBounds(220, 180, 60, 23);
+        addProduct.setBounds(220, 170, 60, 32);
 
         Tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,7 +164,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(10, 360, 70, 23);
+        reset.setBounds(10, 380, 70, 32);
 
         cashIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,12 +177,12 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cashIn);
-        cashIn.setBounds(130, 250, 150, 30);
+        cashIn.setBounds(130, 290, 150, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Cash");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(10, 260, 50, 20);
+        jLabel5.setBounds(10, 290, 50, 20);
 
         buttonTotal.setText("Total");
         buttonTotal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,7 +196,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonTotal);
-        buttonTotal.setBounds(90, 360, 70, 23);
+        buttonTotal.setBounds(90, 380, 70, 32);
         jPanel1.add(messege);
         messege.setBounds(210, 170, 290, 20);
 
@@ -208,7 +204,7 @@ public class kasirApp extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Kembalian");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 300, 70, 14);
+        jLabel6.setBounds(10, 340, 70, 14);
 
         jButton1.setText("Persediaan");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +213,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(10, 30, 110, 23);
+        jButton1.setBounds(10, 30, 110, 32);
 
         Kembalian.setEditable(false);
         Kembalian.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +222,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Kembalian);
-        Kembalian.setBounds(130, 290, 150, 30);
+        Kembalian.setBounds(130, 330, 150, 30);
 
         jLabel4.setText("Tanggal");
         jPanel1.add(jLabel4);
@@ -241,6 +237,22 @@ public class kasirApp extends javax.swing.JFrame {
         });
         jPanel1.add(Jumlah);
         Jumlah.setBounds(410, 360, 140, 20);
+
+        name.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ".", "Nitrogen per Liter     ", "Debu Cosmic per Gram   ", "Gas Kalium Hidroksida per Kg", "Air Purba per Liter  ", "Fosil Batuan per Gram", "Beterai Plasma  ", "Infinity Stone - Reality Stone" }));
+        jPanel1.add(name);
+        name.setBounds(130, 90, 150, 30);
+
+        jLabel7.setText("Total Belanja");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(10, 256, 100, 20);
+
+        TotalB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TotalBActionPerformed(evt);
+            }
+        });
+        jPanel1.add(TotalB);
+        TotalB.setBounds(130, 250, 150, 30);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 760, 460);
@@ -285,14 +297,11 @@ public class kasirApp extends javax.swing.JFrame {
         Jumlah.setText(""+jumlahharga);
         Jumlah.setVisible(false);
         boolean valid=true;
-        messege.setText("");
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
-        if(name.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Maaf anda harus melengkapi seluruh form");
-        }
-        else{
+        
+       
             Vector z = new Vector();
-            z.add(name.getText());
+            z.add(name.getSelectedItem());
             z.add(price.getText());
             z.add(qty.getText());
             z.add(Jumlah.getText());
@@ -302,8 +311,7 @@ public class kasirApp extends javax.swing.JFrame {
             for(int e=0;e<tb.getRowCount();e++){
                 total +=Integer.parseInt(tb.getValueAt(e, 3).toString());
             }
-        }
-        name.setText("");
+        TotalB.setText(""+total);
         price.setText("");
         qty.setText("");
     }//GEN-LAST:event_addProductActionPerformed
@@ -313,7 +321,7 @@ public class kasirApp extends javax.swing.JFrame {
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         tb.getDataVector().removeAllElements();
         tb.fireTableDataChanged();
-        name.setText("");
+
         price.setText("");
         qty.setText("");
     }//GEN-LAST:event_resetActionPerformed
@@ -338,10 +346,6 @@ public class kasirApp extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_cashInKeyTyped
-
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
 
     private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
         // TODO add your handling code here:
@@ -387,6 +391,10 @@ public class kasirApp extends javax.swing.JFrame {
     private void JumlahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JumlahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JumlahActionPerformed
+
+    private void TotalBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalBActionPerformed
     
     /**
      * @param args the command line arguments
@@ -429,6 +437,7 @@ public class kasirApp extends javax.swing.JFrame {
     private javax.swing.JTextField Jumlah;
     private javax.swing.JTextField Kembalian;
     private javax.swing.JTable Tabel;
+    private javax.swing.JTextField TotalB;
     private javax.swing.JButton addProduct;
     private javax.swing.JButton buttonTotal;
     private javax.swing.JTextField cashIn;
@@ -439,10 +448,11 @@ public class kasirApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel messege;
-    private javax.swing.JTextField name;
+    private javax.swing.JComboBox name;
     private javax.swing.JTextField price;
     private javax.swing.JTextField qty;
     private javax.swing.JButton reset;

@@ -16,7 +16,7 @@ public class Tugas2PLkasir {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new kasirApp().setVisible(true);
+        new LOGIN().setVisible(true);
         
         
     }
