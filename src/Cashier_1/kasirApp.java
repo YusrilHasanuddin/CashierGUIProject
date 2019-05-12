@@ -28,6 +28,8 @@ public class kasirApp extends javax.swing.JFrame {
     public double totalBelanja;
     public double cash;
     public double kembalian;
+    int HARGA;
+    String rego;
     
     public kasirApp() {
         initComponents();
@@ -96,16 +98,17 @@ public class kasirApp extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Barang");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 100, 80, 16);
+        jLabel1.setBounds(10, 100, 80, 14);
 
         jLabel2.setText("Harga Satuan");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 140, 80, 16);
+        jLabel2.setBounds(10, 140, 80, 14);
 
         jLabel3.setText("Qty");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(10, 180, 70, 20);
 
+        price.setEditable(false);
         price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceActionPerformed(evt);
@@ -134,7 +137,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addProduct);
-        addProduct.setBounds(220, 170, 60, 32);
+        addProduct.setBounds(220, 170, 60, 23);
 
         Tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -164,7 +167,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(10, 380, 70, 32);
+        reset.setBounds(10, 380, 70, 23);
 
         cashIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +199,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonTotal);
-        buttonTotal.setBounds(90, 380, 70, 32);
+        buttonTotal.setBounds(90, 380, 70, 23);
         jPanel1.add(messege);
         messege.setBounds(210, 170, 290, 20);
 
@@ -213,7 +216,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(10, 30, 110, 32);
+        jButton1.setBounds(10, 30, 110, 23);
 
         Kembalian.setEditable(false);
         Kembalian.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +241,12 @@ public class kasirApp extends javax.swing.JFrame {
         jPanel1.add(Jumlah);
         Jumlah.setBounds(410, 360, 140, 20);
 
-        name.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ".", "Nitrogen per Liter     ", "Debu Cosmic per Gram   ", "Gas Kalium Hidroksida per Kg", "Air Purba per Liter  ", "Fosil Batuan per Gram", "Beterai Plasma  ", "Infinity Stone - Reality Stone" }));
+        name.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ".", "Nitrogen per Liter", "Debu Cosmic per Gram", "Gas Kalium Hidroksida per Kilogram", "Air Purba per Liter", "Fosil Batuan per Gram", "Beterai Plasma", "Infinity Stone - Reality Stone" }));
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
         jPanel1.add(name);
         name.setBounds(130, 90, 150, 30);
 
@@ -321,9 +329,13 @@ public class kasirApp extends javax.swing.JFrame {
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
         tb.getDataVector().removeAllElements();
         tb.fireTableDataChanged();
-
+        
+        name.setSelectedItem(".");
         price.setText("");
         qty.setText("");
+        TotalB.setText("");
+        cashIn.setText("");
+        Kembalian.setText("");
     }//GEN-LAST:event_resetActionPerformed
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
@@ -395,6 +407,44 @@ public class kasirApp extends javax.swing.JFrame {
     private void TotalBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalBActionPerformed
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        HARGA = 0;
+        if(name.getSelectedItem() =="."){
+            HARGA = 0;
+            
+            
+        }
+       if(name.getSelectedItem() == "Nitrogen per Liter"){
+           HARGA = 99;
+           
+           }
+       else if(name.getSelectedItem() == "Debu Cosmic per Gram"){
+           HARGA = 299;  
+           
+       }
+       else if(name.getSelectedItem() == "Gas Kalium Hidroksida per Kilogram"){
+           HARGA = 119;
+           
+       }
+       else if(name.getSelectedItem() == "Air Purba per Liter"){
+           HARGA = 2999;
+           
+       }
+       else if(name.getSelectedItem() == "Fosil Batuan per Gram"){
+           HARGA = 999;   
+       }
+       else if(name.getSelectedItem() == "Beterai Plasma"){
+           HARGA = 799;
+           
+       }
+       else if(name.getSelectedItem() == "Infinity Stone - Reality Stone"){
+           HARGA = 99999;   
+       }
+       String rego = Integer.toString(HARGA);
+       price.setText(rego);
+       
+    }//GEN-LAST:event_nameActionPerformed
     
     /**
      * @param args the command line arguments

@@ -78,6 +78,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="price">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="priceActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="priceKeyTyped"/>
@@ -293,16 +296,19 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="8">
                 <StringItem index="0" value="."/>
-                <StringItem index="1" value="Nitrogen per Liter     "/>
-                <StringItem index="2" value="Debu Cosmic per Gram   "/>
-                <StringItem index="3" value="Gas Kalium Hidroksida per Kg"/>
-                <StringItem index="4" value="Air Purba per Liter  "/>
+                <StringItem index="1" value="Nitrogen per Liter"/>
+                <StringItem index="2" value="Debu Cosmic per Gram"/>
+                <StringItem index="3" value="Gas Kalium Hidroksida per Kilogram"/>
+                <StringItem index="4" value="Air Purba per Liter"/>
                 <StringItem index="5" value="Fosil Batuan per Gram"/>
-                <StringItem index="6" value="Beterai Plasma  "/>
+                <StringItem index="6" value="Beterai Plasma"/>
                 <StringItem index="7" value="Infinity Stone - Reality Stone"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="130" y="90" width="150" height="30"/>
