@@ -7,7 +7,7 @@ package Cashier_1;
 
 /**
  *
- * @author ILHAM HADISYAH
+ * 
  */
 public class Tugas2PLkasir {
 
