@@ -8,7 +8,7 @@ import jaco.mp3.player.MP3Player;
 import java.io.File;
 /**
  *
- * @author 
+ * @author User
  */
 public class LOGIN extends javax.swing.JFrame {
 
@@ -50,7 +50,7 @@ public class LOGIN extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cashier/Image/256px-Thanos.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tugas2plkasir/Image/256px-Thanos.png"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(260, 230, 340, 260);
 
