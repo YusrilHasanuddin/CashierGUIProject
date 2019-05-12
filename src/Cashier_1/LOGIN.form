@@ -32,12 +32,12 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/tugas2plkasir/Image/256px-Thanos.png"/>
+          <Image iconType="3" name="/Cashier/Image/256px-Thanos.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="270" y="240" width="340" height="260"/>
+          <AbsoluteConstraints x="260" y="230" width="340" height="260"/>
         </Constraint>
       </Constraints>
     </Component>
