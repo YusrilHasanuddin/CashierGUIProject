@@ -22,6 +22,7 @@ public class Gudang extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         setTitle("App by Us");
     }
+    
     public void load()
     {
         link="src/Cashier_1/DataBarang.txt";
@@ -45,6 +46,7 @@ public class Gudang extends javax.swing.JFrame {
         }
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
