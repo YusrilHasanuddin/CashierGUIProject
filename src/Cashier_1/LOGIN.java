@@ -8,7 +8,7 @@ import jaco.mp3.player.MP3Player;
 import java.io.File;
 /**
  *
- * @author User
+ * @author 
  */
 public class LOGIN extends javax.swing.JFrame {
 
