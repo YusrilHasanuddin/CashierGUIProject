@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tugas2plkasir;
+package Cashier_1;
 
 /**
  *
@@ -67,9 +67,9 @@ public class MenuUtama extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(180, 220, 110, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tugas2plkasir/Image/crop.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cashier_1/Image/crop.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -160, 444, 794);
+        jLabel1.setBounds(0, -160, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

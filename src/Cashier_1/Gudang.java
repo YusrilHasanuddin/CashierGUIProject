@@ -1,4 +1,4 @@
-package tugas2plkasir;
+package Cashier_1;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,7 +24,7 @@ public class Gudang extends javax.swing.JFrame {
     }
     public void load()
     {
-        link="src/tugas2plkasir/DataBarang.txt";
+        link="src/Cashier_1/DataBarang.txt";
        file = new File(link);
         try{
             br= new BufferedReader(new FileReader(file));

@@ -1,2 +1,0 @@
-Nama Barang,Harga Satuan,Qty,Jumlah harga
-hjbhjbh/200/2/400
