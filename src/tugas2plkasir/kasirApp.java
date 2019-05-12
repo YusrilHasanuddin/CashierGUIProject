@@ -79,7 +79,6 @@ public class kasirApp extends javax.swing.JFrame {
         Kembalian = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         Jumlah = new javax.swing.JTextField();
-        Cetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(718, 482));
@@ -186,7 +185,12 @@ public class kasirApp extends javax.swing.JFrame {
         jPanel1.add(jLabel5);
         jLabel5.setBounds(10, 270, 50, 20);
 
-        buttonTotal.setText("total");
+        buttonTotal.setText("Total");
+        buttonTotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonTotalMouseClicked(evt);
+            }
+        });
         buttonTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonTotalActionPerformed(evt);
@@ -230,15 +234,6 @@ public class kasirApp extends javax.swing.JFrame {
         jPanel1.add(Jumlah);
         Jumlah.setBounds(90, 210, 140, 20);
 
-        Cetak.setText("Cetak");
-        Cetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CetakActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Cetak);
-        Cetak.setBounds(170, 370, 61, 23);
-
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 720, 480);
 
@@ -270,7 +265,7 @@ public class kasirApp extends javax.swing.JFrame {
             bw.close();
         } catch (Exception e) {
         }
-            
+         
     }//GEN-LAST:event_buttonTotalActionPerformed
 
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
@@ -307,7 +302,11 @@ public class kasirApp extends javax.swing.JFrame {
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         DefaultTableModel tb = (DefaultTableModel) Tabel.getModel();
-        tb.removeRow(all);
+        tb.getDataVector().removeAllElements();
+        tb.fireTableDataChanged();
+        name.setText("");
+        price.setText("");
+        qty.setText("");
     }//GEN-LAST:event_resetActionPerformed
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped
@@ -354,29 +353,16 @@ public class kasirApp extends javax.swing.JFrame {
         stock.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
+    private void buttonTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonTotalMouseClicked
         // TODO add your handling code here:
-        
-        //int cash= Integer.parseInt(cashIn.getText());
         totalBelanja = 0;
         for (int i = 0; i < Tabel.getRowCount(); i++){
             int amount = Integer.parseInt((String) Tabel.getValueAt(i, 3));
             totalBelanja += amount;  
         }
-        
-        
-//        int kembalian= cash - totalBelanja;
-//        int invertKembalian = kembalian*(-1);
-   //     if(cash<totalBelanja){
-//            JOptionPane.showMessageDialog(rootPane, "Cash kurang Rp "+invertKembalian+",00");
-//           
-//        }else{
-//        Kembalian.setText("Rp "+ kembalian+",00");
-//        }
-        //Belanjaan = totalBelanja;
         Interface cetak = new Interface(totalBelanja);
         cetak.setVisible(true);
-    }//GEN-LAST:event_CetakActionPerformed
+    }//GEN-LAST:event_buttonTotalMouseClicked
     
     /**
      * @param args the command line arguments
@@ -416,7 +402,6 @@ public class kasirApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cetak;
     private javax.swing.JTextField Jumlah;
     private javax.swing.JTextField Kembalian;
     private javax.swing.JTable Tabel;
