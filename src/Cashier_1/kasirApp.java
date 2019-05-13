@@ -87,6 +87,7 @@ public class kasirApp extends javax.swing.JFrame {
         name = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         TotalB = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(760, 485));
@@ -98,11 +99,11 @@ public class kasirApp extends javax.swing.JFrame {
 
         jLabel1.setText("Nama Barang");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 100, 80, 14);
+        jLabel1.setBounds(10, 100, 80, 16);
 
         jLabel2.setText("Harga Satuan");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 140, 80, 14);
+        jLabel2.setBounds(10, 140, 80, 16);
 
         jLabel3.setText("Qty");
         jPanel1.add(jLabel3);
@@ -137,7 +138,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addProduct);
-        addProduct.setBounds(220, 170, 60, 23);
+        addProduct.setBounds(220, 170, 60, 32);
 
         Tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,7 +168,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reset);
-        reset.setBounds(10, 380, 70, 23);
+        reset.setBounds(10, 380, 70, 32);
 
         cashIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +200,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(buttonTotal);
-        buttonTotal.setBounds(90, 380, 70, 23);
+        buttonTotal.setBounds(90, 380, 70, 32);
         jPanel1.add(messege);
         messege.setBounds(210, 170, 290, 20);
 
@@ -216,7 +217,7 @@ public class kasirApp extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(10, 30, 110, 23);
+        jButton1.setBounds(10, 10, 110, 32);
 
         Kembalian.setEditable(false);
         Kembalian.addActionListener(new java.awt.event.ActionListener() {
@@ -261,6 +262,15 @@ public class kasirApp extends javax.swing.JFrame {
         });
         jPanel1.add(TotalB);
         TotalB.setBounds(130, 250, 150, 30);
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(180, 380, 66, 32);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 760, 460);
@@ -445,6 +455,13 @@ public class kasirApp extends javax.swing.JFrame {
        price.setText(rego);
        
     }//GEN-LAST:event_nameActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    model = (DefaultTableModel) Tabel.getModel();
+    int row = Tabel.getSelectedRow();
+    model.removeRow(row);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -492,6 +509,7 @@ public class kasirApp extends javax.swing.JFrame {
     private javax.swing.JButton buttonTotal;
     private javax.swing.JTextField cashIn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
